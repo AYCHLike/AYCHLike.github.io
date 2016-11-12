@@ -1,10 +1,15 @@
 class Api::QuestionnairesController < ApplicationController
   def index
-    @questionnaires = Questionnaire.all
+    @questionnaires = Questionnaire.all.includes(:questions)
   end
 
   def show
-    @questionnaire = Questionnaire.find(params[:id])
+    if current_user.admin
+      # If the current user is an admin, we're eager loading the responses and the usernames of the respondents
+      @questionnaire = Questionnaire.find(params[:id]).includes(questions: { responses: { author: :username}})
+    else
+      @questionnaire = Questionnaire.find(params[:id]).includes(:questions)
+    end
   end
 
   def create
