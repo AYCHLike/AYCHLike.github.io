@@ -11,6 +11,7 @@
 
 class Questionnaire < ApplicationRecord
   validates :title, :author, presence: true
+  validates :title, uniqueness: { scope: :author_id, message: "already exists" }
 
   belongs_to :author,
     foreign_key: :author_id,

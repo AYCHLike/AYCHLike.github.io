@@ -12,6 +12,8 @@
 
 class Question < ApplicationRecord
   validates :name, :label, :questionnaire, presence: true
+  validates :name, uniqueness: { scope: :questionnaire_id,
+     message: "already exists in this questionnaire" }
 
   belongs_to :questionnaire
 
