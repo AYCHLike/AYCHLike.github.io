@@ -16,6 +16,8 @@ const questionnaireReducer = (state = {}, action) => {
       newState[action.questionnaire.id] = action.questionnaire;
       return newState;
     }
+    default:
+      return state;
   }
 };
 

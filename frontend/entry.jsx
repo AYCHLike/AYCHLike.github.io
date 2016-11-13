@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import rootReducer from './reducers/root_reducer.js';
 import rootMiddleware from './middleware/root_middleware.js';
 import configureStore from './store/store.js';
+import Root from './components/root.jsx';
 
 document.addEventListener("DOMContentLoaded", () => {
   // if there is a bootstrapped current_user, pass it in as preloaded state
@@ -15,5 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
+  window.store = store;
   ReactDOM.render(<Root store={ store } />, document.getElementById("root"));
 });
