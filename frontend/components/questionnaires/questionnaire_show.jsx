@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminQuestionnaire from './admin_questionnaire.jsx';
+import EndUserQuestionnaire from './end_user_questionnaire.jsx';
 import { Link } from 'react-router';
 
 class QuestionnaireShow extends React.Component {
@@ -13,7 +14,7 @@ class QuestionnaireShow extends React.Component {
     if (!this.props.questionnaire) {
       return <h1>Loading...</h1>;
     } else {
-      if (this.props.admin) {
+      if (this.props.currentUser.admin) {
       return (
         <article>
           <Link to="/questionnaires">Back</Link>

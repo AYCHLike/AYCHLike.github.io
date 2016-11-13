@@ -1,18 +1,23 @@
 import React from 'react';
+import CompletedQuestionnaire from './completed_questionnaire.jsx';
+import EndUserQuestionnaireForm from './end_user_questionnaire_form.jsx';
 
 
-class EndUserQuestionnaire extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  questionnaireCompleted () {
+const EndUserQuestionnaire = ({ questionnaire, currentUser }) => {
+  const questionnaireCompleted = () => {
     // Checking to see if the current user's id is present in the responses
-    const { questionnaire: { questions }, currentUser } = this.props;
-    return Object.keys(questions.responses).includes(currentUser.id);
+    const { questions } = questionnaire;
+    const responses = questions[Object.keys(questions)[0]].responses;
+    return Object.keys(responses).includes(String(currentUser.id));
+  };
+
+  if (questionnaireCompleted()) {
+    return <CompletedQuestionnaire questionnaire={ questionnaire }
+      userId={ currentUser.id } />;
+  } else {
+    return <EndUserQuestionnaireForm questionnaire={ questionnaire } />;
   }
 
-  render () {
+};
 
-  }
-}
+export default EndUserQuestionnaire;

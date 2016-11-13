@@ -5,7 +5,7 @@ import { requestSingleQuestionnaire } from '../../actions/questionnaire_actions.
 const mapStateToProps = ({ currentUser, questionnaires}, ownProps) => ({
   // React Router gives us a params prop, so we'll use it to grab the correct questionnaire from the store
   questionnaire: questionnaires[ownProps.params.id],
-  admin: currentUser.admin
+  currentUser
 });
 
 export default connect(
