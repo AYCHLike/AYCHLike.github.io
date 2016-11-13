@@ -8,7 +8,8 @@ const logger = createLogger();
 
 const rootMiddleware = applyMiddleware(
   sessionMiddleware,
-  questionnaireMiddleware
+  questionnaireMiddleware,
+  logger
 );
 
 export default rootMiddleware;

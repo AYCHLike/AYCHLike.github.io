@@ -1,3 +1,1 @@
-@questionnaires.each do |questionnaire|
-  json.partial! 'api/questionnaires/questionnaire', questionnaire: questionnaire
-end
+json.array! @questionnaires, partial: 'api/questionnaires/questionnaire', as: :questionnaire

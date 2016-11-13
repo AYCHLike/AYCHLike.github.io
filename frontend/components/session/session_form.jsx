@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -16,14 +16,18 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = { username: this.state.username, password: this.state.password };
     if (this.props.formType === "login") {
+      // Was definitely excited upon learning that ajax calls return promises!
       this.props.login(user).then(() => {
         this.setState({ username: "", password: ""});
-        this.props.router.push("/")
+        // If we had any errors in the store from failed attempts, we want to remove them
+        this.props.clearErrors();
+        this.props.router.push("/questionnaires");
       });
     } else {
       this.props.signup(user).then((data) => {
         this.setState({ username: "", password: ""});
-        this.props.router.push("/");
+        this.props.clearErrors();
+        this.props.router.push("/questionnaires");
       });
     }
   }
@@ -43,15 +47,17 @@ class SessionForm extends React.Component {
   }
 
   demoLogin (e) {
+    // Figured you'd probably want to be able to login as the admin
     e.preventDefault();
     const user = { username: "admin", password: "password" };
     this.props.login(user).then(() => {
       this.setState({ username: "", password: ""});
-      this.props.router.push("/");
+      this.props.router.push("/questionnaires");
     });
   }
 
   render () {
+    // Displaying different buttons and different form type based on formType from URL
     let header;
     let linkText;
     let beforeLinkText;
@@ -64,11 +70,13 @@ class SessionForm extends React.Component {
       beforeLinkText = "Already have an account?";
       linkText = "Log In";
     }
+    // Invalid form input will set errors in the redux store, which will change
+    // the props and force a re-render, this time with errors being mapped to this component's props
     const allErrors = this.props.errors.map((error, idx) => {
       return <li className="form-error" key={ idx }>{ error }</li>;
     });
     return (
-      <div className='form-container'>
+      <div>
         { header }
         <form onSubmit={ this.handleSubmit }>
           <label>Username</label>
@@ -80,10 +88,10 @@ class SessionForm extends React.Component {
             <ul>
               { allErrors }
             </ul>
-          <button className="submit">Continue</button><br />
-          <span className="before-link">{ beforeLinkText }</span>
-          <button className="swapForms" onClick={ this.swapForms }>{ linkText }</button>
-          <button className="swapForms" onClick={ this.demoLogin }>Demo</button>
+          <button>Continue</button><br />
+          <span>{ beforeLinkText }</span>
+          <button onClick={ this.swapForms }>{ linkText }</button>
+          <button onClick={ this.demoLogin }>Demo</button>
         </form>
       </div>
     );

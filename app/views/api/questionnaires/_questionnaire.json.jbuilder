@@ -5,9 +5,9 @@ json.questions do
       json.extract! question, :name, :label
       json.responses do
         question.responses.each do |response|
-          json.set! response.id do
+          json.set! response.author.id do
             json.body response.body
-            json.author response.author.username
+            json.author_name response.author.username
             json.created_at time_ago_in_words(response.created_at) + ' ago'
           end
         end

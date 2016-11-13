@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app.jsx';
 import SessionFormContainer from './session/session_form_container.js';
-import QuestionnaireIndex from './questionnaires/questionnaire_index.jsx';
+import QuestionnaireIndexContainer from './questionnaires/questionnaire_index_container.js';
+import QuestionnaireShowContainer from './questionnaires/questionnaire_show_container.js';
 
 const Root = ({ store }) => {
   const _redirectUnlessLoggedIn = (nextState, replace) => {
@@ -20,7 +21,8 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App } >
-          <IndexRoute component={ QuestionnaireIndex } onEnter={ _redirectUnlessLoggedIn } />
+          <Route path="questionnaires" component={ QuestionnaireIndexContainer } onEnter={ _redirectUnlessLoggedIn } />
+          <Route path="questionnaires/:id" component={ QuestionnaireShowContainer } />
           <Route path="login" component={ SessionFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path="signup" component={ SessionFormContainer} onEnter={ _redirectIfLoggedIn } />
         </Route>

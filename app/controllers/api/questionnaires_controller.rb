@@ -10,6 +10,8 @@ class Api::QuestionnairesController < ApplicationController
   end
 
   def create
+    # Don't want to include author_id in the permitted params, so we'll use an
+    # ActiveRecord association relation to supply that parameter
     @questionnaire = current_user.authored_questionnaires.new(questionnaire_params)
 
     if @questionnaire.save
