@@ -8,6 +8,7 @@ json.questions do
           json.set! response.id do
             json.body response.body
             json.author response.author.username
+            json.created_at time_ago_in_words(response.created_at) + ' ago'
           end
         end
       end
@@ -22,29 +23,33 @@ end
 #   "questions": {
 #     "1": {
 #       "name": "Question 1",
-#       "label": "Favorite food?",
+#       "label": "Favorite food",
 #       "responses": {
 #         "1": {
 #           "body": "Lasagna",
-#           "author": "testuser"
+#           "author": "testuser",
+#           "created_at": "about 17 hours ago"
 #         },
 #         "2": {
 #           "body": "Pizza",
-#           "author": "another"
+#           "author": "another",
+#           "created_at": "about 17 hours ago"
 #         }
 #       }
 #     },
 #     "2": {
 #       "name": "Question 2",
-#       "label": "Favorite color?",
+#       "label": "Favorite color",
 #       "responses": {
 #         "3": {
 #           "body": "Red",
-#           "author": "another"
+#           "author": "another",
+#           "created_at": "about 17 hours ago"
 #         },
 #         "4": {
 #           "body": "Blue",
-#           "author": "testuser"
+#           "author": "testuser",
+#           "created_at": "about 17 hours ago"
 #         }
 #       }
 #     }

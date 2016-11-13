@@ -1,6 +1,8 @@
 class Api::QuestionnairesController < ApplicationController
   def index
-    @questionnaires = Questionnaire.all.includes(:questions)
+    # I'm going to be storing all of the relevant info for each questionnaire in the redux store from the get go,
+    # so it makes sense to eager load everything when I fetch the questionnaires and include it all in the jbuilder view
+    @questionnaires = Questionnaire.includes(questions: { responses: :author }).all
   end
 
   def show
