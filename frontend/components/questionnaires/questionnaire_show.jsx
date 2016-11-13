@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminQuestionnaire from './admin_questionnaire.jsx';
+import { Link } from 'react-router';
 
 class QuestionnaireShow extends React.Component {
   componentDidMount () {
@@ -13,9 +14,20 @@ class QuestionnaireShow extends React.Component {
       return <h1>Loading...</h1>;
     } else {
       if (this.props.admin) {
-        return <AdminQuestionnaire questionnaire={ this.props.questionnaire }/>;
+      return (
+        <article>
+          <Link to="/questionnaires">Back</Link>
+          <AdminQuestionnaire questionnaire={ this.props.questionnaire }/>
+        </article>
+        );
       } else {
-        return <EndUserQuestionnaire questionnaire={ this.props.questionnaire } />;
+      return (
+        <article>
+          <Link to="/questionnaires">Back</Link>
+          <EndUserQuestionnaire questionnaire={ this.props.questionnaire }
+            currentUser= { this.props.currentUser }/>
+        </article>
+        );
       }
     }
   }
