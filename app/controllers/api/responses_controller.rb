@@ -1,8 +1,4 @@
 class Api::ResponsesController < ApplicationController
-  def show
-    @response = Response.find(params[:id])
-  end
-
   def create
     @response = current_user.question_responses.new(response_params)
 
