@@ -1,16 +1,20 @@
 class Api::ResponsesController < ApplicationController
   def create
-    @response = current_user.question_responses.new(response_params)
-
-    if @response.save
-      render :show
+    # taking the sent up params and making a new instance for each, passing it into the factory
+    responses = JSON.parse(response_params).map do |params|
+      current_user.question_responses.new(body: params["body"], question_id: params["question_id"])
+    end
+    @responses = Response.create_responses(responses)
+    if @responses[0].is_a?(String)
+      render json: @responses, status: 422
+      return
     else
-      render json: @response.errors.full_messages, status: 422
+      render :index
     end
   end
 
   private
   def response_params
-    params.require(:response).permit(:body, :question_id)
+    params.require(:responses)
   end
 end

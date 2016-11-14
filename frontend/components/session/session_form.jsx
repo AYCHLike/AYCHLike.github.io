@@ -52,6 +52,7 @@ class SessionForm extends React.Component {
     const user = { username: "admin", password: "password" };
     this.props.login(user).then(() => {
       this.setState({ username: "", password: ""});
+      this.props.clearErrors();
       this.props.router.push("/questionnaires");
     });
   }

@@ -5,7 +5,7 @@ import CompletedQuestionnaire from './completed_questionnaire.jsx';
 class AdminQuestionnaire extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedUserId: null };
+    this.state = { selectedUserKey: null };
     this.buildUserSelectorOptions = this.buildUserSelectorOptions.bind(this);
     this.selectUser = this.selectUser.bind(this);
   }
@@ -16,14 +16,15 @@ class AdminQuestionnaire extends React.Component {
 
     // I'm just grabbing the responses from one of the questions, we'll require every question
     // in a questionnaire to be answered so every question will have the same respondents
-    const responses = questions[Object.keys(questions)[0]].responses;
     let defaultOption;
     let users;
+    const responses = questions[Object.keys(questions)[0]].responses;
     // If there are responses, build options for each user and set appropriate default option
-    if (responses) {
-      users = Object.keys(responses).map((userId) => {
-        const username = responses[userId].author_name;
-        return <option key={ userId } value={ userId }>{ username }</option>;
+    if (responses[0]) {
+      users = responses.map((response, idx) => {
+        const author = response.author_name;
+        const key = idx;
+        return <option key={ key } value={ key }>{ author }</option>;
       });
       defaultOption = <option disabled value="default">Select a Respondent</option>;
     } else {
@@ -38,7 +39,7 @@ class AdminQuestionnaire extends React.Component {
   }
 
   selectUser (e) {
-    this.setState({ selectedUserId: e.target.value });
+    this.setState({ selectedUserKey: e.target.value });
   }
 
   render () {
@@ -49,7 +50,7 @@ class AdminQuestionnaire extends React.Component {
         <h1>{ questionnaire.title }</h1>
         { selectorOptions }
         <CompletedQuestionnaire questionnaire={ this.props.questionnaire }
-          userId={ this.state.selectedUserId} />
+          userKey={ this.state.selectedUserKey } />
       </section>
     );
   }

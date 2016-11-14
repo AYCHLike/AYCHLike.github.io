@@ -4,13 +4,7 @@ json.questions do
     json.set! question.id do
       json.extract! question, :name, :label
       json.responses do
-        question.responses.each do |response|
-          json.set! response.author.id do
-            json.body response.body
-            json.author_name response.author.username
-            json.created_at time_ago_in_words(response.created_at) + ' ago'
-          end
-        end
+        json.array! question.responses, partial: 'api/responses/response', as: :response
       end
     end
   end

@@ -1,6 +1,6 @@
 import * as QuestActions from '../actions/questionnaire_actions.js';
 import * as QuestAPI from '../util/questionnaire_api_util.js';
-import { receiveErrors, clearErrors } from '../actions/error_actions.js';
+import { receiveErrors } from '../actions/error_actions.js';
 
 const questionnaireMiddleware = ({ dispatch }) => (next) => (action) => {
   const error = (data) => dispatch(receiveErrors(data.responseJSON));

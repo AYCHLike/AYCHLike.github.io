@@ -32,6 +32,7 @@ class QuestionnaireIndex extends React.Component {
   }
 
   toggleForm () {
+    this.props.clearErrors();
     this.setState({ showForm: !this.state.showForm });
   }
 
@@ -39,8 +40,13 @@ class QuestionnaireIndex extends React.Component {
     const questionnaireLinks = this.constructLinks();
     // Pressing the button will toggle between showing links to existing questionnaires
     // and showing the form to add a new questionnaire. Upon successful creation, the form
-    // component will call the toggleForm method to show the links index again
+    // component will call the toggleForm method to show the links index again.
+    // Obviously we don't want the button to exist unless current user is an admin
     let body;
+    let formButton;
+    if (this.props.admin) {
+      formButton = <button onClick={ this.toggleForm }>Show/Hide Form</button>
+    }
     if (this.state.showForm) {
       body = <AdminQuestionnaireFormContainer toggleForm={ this.toggleForm }/>;
     } else {
@@ -51,7 +57,7 @@ class QuestionnaireIndex extends React.Component {
     } else {
       return (
         <article>
-          <button onClick={ this.toggleForm }>Show/Hide Form</button>
+          { formButton }
           { body }
         </article>
       );

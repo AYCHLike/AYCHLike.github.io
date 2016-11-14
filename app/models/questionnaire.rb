@@ -23,17 +23,14 @@ class Questionnaire < ApplicationRecord
   def self.build_questionnaire(questionnaire, questions)
     begin
       ActiveRecord::Base.transaction do
-        # Breaking out of the transaction and rendering errors if any validations fail
+        # Saving the questionnaire and each question, and if anything is invalid, it'll
+        # throw an exception, roll back the transaction, and we'll catch the exception
+        # and render the invalid record's errors in the controller action
         questionnaire.save!
-        # Going through once to check if everything passes validations, breaking out if they don't
-        validated_questions = []
         questions.each do |question_params|
           question = questionnaire.questions.new(name: question_params["name"], label: question_params["label"])
           question.save!
         end
-        # Then going through once more to save them
-        # questionnaire.save
-        # validated_questions.each { |question| question.save }
       end
     rescue ActiveRecord::RecordInvalid => e
       return e.record.errors.full_messages

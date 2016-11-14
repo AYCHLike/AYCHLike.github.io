@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import QuestionnaireIndex from './questionnaire_index.jsx';
 import { requestAllQuestionnaires } from '../../actions/questionnaire_actions.js';
+import { clearErrors } from '../../actions/error_actions.js';
 
 
 const mapStateToProps = ({ questionnaires, currentUser }) => {
@@ -18,5 +19,5 @@ const mapStateToProps = ({ questionnaires, currentUser }) => {
 
 export default connect(
   mapStateToProps,
-  { requestAllQuestionnaires }
+  { requestAllQuestionnaires, clearErrors }
 )(QuestionnaireIndex);
