@@ -11,20 +11,15 @@ class Api::QuestionnairesController < ApplicationController
 
   def create
     questionnaire = current_user.authored_questionnaires.new(title: questionnaire_params[:title])
-    # if the submitted questionnaire has a title as necessary, we'll bundle up all of the
-    # related questions into one transaction to save all of them, then we'll eager load
-    # the newly saved questionnaire (complete with responses) and render it in the response
-    if questionnaire.save
-      Question.transaction do
-        JSON.parse(questionnaire_params[:questions]).each do |question_params|
-          questionnaire.questions.create!(name: question_params["name"], label: question_params["label"])
-        end
-      end
-      @questionnaire = Questionnaire.includes(questions: { responses: :author }).last
-      render :show
-    else
-      render json: @questionnaire.errors.full_messages, status: 422
+    questions = JSON.parse(questionnaire_params[:questions])
+    # Factory method for building a questionnaire and associated questions, check it out in the model
+    invalid = Questionnaire.build_questionnaire(questionnaire, questions)
+    if invalid
+      render json: invalid, status: 422
+      return
     end
+    @questionnaire = Questionnaire.includes(questions: { responses: :author }).last
+    render :show
   end
 
   private
