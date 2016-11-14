@@ -3,7 +3,11 @@ import { RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/error_actions.js';
 const errorReducer = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_ERRORS:
-      return action.errors;
+      const newState = Array.from(state);
+      action.errors.forEach((error) => {
+        newState.push(error)
+      });
+      return newState;
     case CLEAR_ERRORS:
       return [];
     default:

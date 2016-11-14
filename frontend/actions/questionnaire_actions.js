@@ -13,9 +13,10 @@ export const requestSingleQuestionnaire = (id) => ({
   id
 });
 
-export const submitQuestionnaire = (questionnaire) => ({
+export const submitQuestionnaire = (questionnaire, questions) => ({
   type: SUBMIT_QUESTIONNAIRE,
-  questionnaire
+  questionnaire,
+  questions
 });
 
 export const receiveAllQuestionnaires = (questionnaires) => ({

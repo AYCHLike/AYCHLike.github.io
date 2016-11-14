@@ -16,7 +16,7 @@ const questionnaireMiddleware = ({ dispatch }) => (next) => (action) => {
     }
     case QuestActions.SUBMIT_QUESTIONNAIRE: {
       const success = (data) => dispatch(QuestActions.receiveSingleQuestionnaire(data));
-      return QuestAPI.createQuestionnaire(action.questionnaire, success, error);
+      return QuestAPI.createQuestionnaire(action.questionnaire, action.questions, success, error);
     }
     default:
       return next(action);

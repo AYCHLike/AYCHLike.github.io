@@ -16,11 +16,12 @@ export const fetchSingleQuestionnaire = (id, success, error) => {
   });
 };
 
-export const createQuestionnaire = (questionnaire, success, error) => {
+export const createQuestionnaire = (title, questions, success, error) => {
+  const stringifiedQuestions = JSON.stringify(questions);
   return $.ajax({
     method: 'POST',
     url: '/api/questionnaires',
-    data: { questionnaire },
+    data: { questionnaire: { title, questions: stringifiedQuestions } },
     success,
     error
   });
