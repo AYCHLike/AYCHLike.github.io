@@ -2,11 +2,12 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 
 // <3 ES6 destructuring
-const Header = ({ currentUser, logout, router }) => {
+const Header = ({ currentUser, logout, router, clearErrors }) => {
 // Displaying either a welcome message and logout button or log in and sign up links
   let links;
   let welcomeMessage;
   const logoutAndRedirect = () => {
+    clearErrors();
     logout();
     router.push("/login");
   };
@@ -17,6 +18,7 @@ const Header = ({ currentUser, logout, router }) => {
     if (router.location.pathname === path) {
       e.preventDefault();
     }
+
   };
   if (currentUser) {
     welcomeMessage = <h3>Welcome, {currentUser.username}</h3>;

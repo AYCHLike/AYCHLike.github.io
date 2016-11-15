@@ -1,0 +1,79 @@
+.index {
+
+  article {
+    width: 100%;
+    background: #f7f6f0;
+    padding: 20px;
+
+    label {
+      text-align: center;
+      display: block;
+      font-size: 26px;
+      margin: 20px 0;
+
+    }
+
+    input {
+      display: block;
+      margin: 0 auto;
+      background: white;
+      width: 75%;
+      height: 50px;
+      border-radius: 3px;
+      text-align: center;
+      padding: 5px 10px;
+      font-size: 17px;
+      line-height: 22px;
+      letter-spacing: .5px;
+      border-radius: 2px;
+      border: 1px solid #ccc;
+    }
+
+    li {
+      color: black;
+    }
+
+    button {
+      margin: 20px 10px;
+    }
+
+    .buttons {
+      margin: 0 auto;
+      width: 350px;
+
+      button {
+        font-size: 16px;
+        padding: 5px 10px;
+        background: #eee;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        display: inline-block;
+      }
+
+      button:hover {
+        border-color: #ccc;
+      }
+    }
+
+    .add {
+      float: left;
+    }
+
+    .remove {
+      float: right;
+    }
+
+    .form-error {
+      text-align: center;
+      color: #ff1c1c;
+      font-size: 16px;
+    }
+
+    .submit {
+      width: 75%;
+      margin: 0 auto;
+      margin-top: 20px;
+      display: block;
+    }
+  }
+}

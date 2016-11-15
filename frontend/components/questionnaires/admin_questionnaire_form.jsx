@@ -20,6 +20,7 @@ class AdminQuestionnaireForm extends React.Component {
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleTitleFieldChange = this.handleTitleFieldChange.bind(this);
     this.addQuestionForm = this.addQuestionForm.bind(this);
+    this.removeQuestionForm = this.removeQuestionForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -44,8 +45,20 @@ class AdminQuestionnaireForm extends React.Component {
     this.setState(newState);
   }
 
+  removeQuestionForm () {
+    // Deletes the last question field added
+    const key = Object.keys(this.state.questions).length;
+    const newState = merge({}, this.state);
+    delete newState.questions[key];
+    this.setState(newState);
+  }
+
   handleSubmit (e) {
     e.preventDefault();
+    if (Object.keys(this.state.questions).length === 0) {
+      this.props.receiveErrors(["You must enter at least one question"]);
+      return;
+    }
     const questions = Object.keys(this.state.questions).map((key) => {
       return this.state.questions[key];
     });
@@ -70,19 +83,21 @@ class AdminQuestionnaireForm extends React.Component {
     });
     return (
       <article>
-        <ul>
-          { allErrors }
-        </ul>
-        <label>Title:
-          <input onChange={ this.handleTitleFieldChange } value={ this.state.title } />
-        </label>
-        <button onClick={ this.addQuestionForm }>Add Question</button>
+        <label>Title:</label>
+        <input onChange={ this.handleTitleFieldChange } value={ this.state.title } />
+        <div className="buttons clearfix">
+          <button className="add" onClick={ this.addQuestionForm }>Add Question</button>
+          <button className="remove" onClick={ this.removeQuestionForm }>Remove Question</button>
+        </div>
         <form onSubmit={ this.handleSubmit }>
           <ul>
             { questionForms }
           </ul>
-          <button>Submit</button>
+          <button className="submit">Submit</button>
         </form>
+        <ul>
+          { allErrors }
+        </ul>
       </article>
     );
   }

@@ -8,12 +8,10 @@ const QuestionField = ({ fieldKey, onChange, value}) => {
   };
   return (
     <li>
-      <label>Name:
-        <input onChange={ (e) => handleChange("name", e) } value={ value["name"] }/>
-      </label>
-      <label>Label:
-        <input onChange={ (e) => handleChange("label", e) } value={ value["label"] }/>
-      </label>
+      <label>Name:</label>
+      <input onChange={ (e) => handleChange("name", e) } value={ value["name"] }/>
+      <label>Label:</label>
+      <input onChange={ (e) => handleChange("label", e) } value={ value["label"] }/>
     </li>
   );
 };
