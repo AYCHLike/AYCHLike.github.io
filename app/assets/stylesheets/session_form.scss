@@ -1,4 +1,4 @@
-.main {
+.auth-main {
   max-width: 960px;
   margin: 0 auto;
 
@@ -67,5 +67,14 @@
     button:not(.submit):hover {
       text-decoration: underline;
     }
+
+    ul {
+      margin-top: -10px;
+    }
+
+  }
+  .form-error {
+    text-align: center;
+    color: #ff1c1c;
   }
 }

@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
       return <li className="form-error" key={ idx }>{ error }</li>;
     });
     return (
-      <div className="main">
+      <div className="auth-main">
         <div className="session-form-container">
           { header }
           <form onSubmit={ this.handleSubmit }>
@@ -85,7 +85,8 @@ class SessionForm extends React.Component {
               <input value={ this.state.username } onChange={ (e) => this.handleChange("username", e) }/>
             <br />
             <label>Password</label>
-              <input type="password" value={ this.state.password } onChange={ (e) => this.handleChange("password", e) }/>
+              <input type="password" value={ this.state.password }
+                onChange={ (e) => this.handleChange("password", e) }/>
             <br />
               <ul>
                 { allErrors }

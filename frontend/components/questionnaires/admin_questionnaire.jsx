@@ -26,7 +26,7 @@ class AdminQuestionnaire extends React.Component {
         const key = idx;
         return <option key={ key } value={ key }>{ author }</option>;
       });
-      defaultOption = <option disabled value="default">Select a Respondent</option>;
+      defaultOption = <option disabled value="default">Select a respondent</option>;
     } else {
       defaultOption = <option disabled value="default">No Responses</option>;
     }

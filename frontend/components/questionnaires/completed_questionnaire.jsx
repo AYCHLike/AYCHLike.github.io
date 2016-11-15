@@ -3,25 +3,32 @@ import React from 'react';
 
 const CompletedQuestionnaire = ({ questionnaire, userKey }) => {
   const { questions } = questionnaire;
-  // Again, it's convenient for the questions to be stored by their ids pointing to
-  // the objects themselves, so I'm just making it easier to iterate over in this situation
+  const response = questions[Object.keys(questions)[0]].responses[userKey];
+  const responseTime = userKey !== null ? response.created_at : null;
   const constructedQuestionnaire = Object.keys(questions).map((id) => {
     const question = questions[id];
     // If we haven't selected a user, the response shouldn't show up
     // On the initial render, the user passed in will be null
     const responseBody = userKey !== null ? question.responses[userKey].body : null;
-    const responseTime = userKey !== null ? question.responses[userKey].created_at : null;
     return (
-      <li key={ id }>
-        <h3>{ question.name }</h3>
-        <h6>{ question.label }</h6>
-        <p>{ responseBody }</p>
-        <p>{ responseTime }</p>
+      <li key={ id } className="clearfix">
+        <span className="name-and-label">
+          <h3>{ question.name }</h3>
+          <h4>{ question.label }</h4>
+        </span>
+        <span className="response-info">
+          <p>{ responseBody }</p>
+        </span>
       </li>
     );
   });
 
-  return <ul>{ constructedQuestionnaire }</ul>;
+  return (
+    <section>
+      <h2>Responded: { responseTime }</h2>
+      <ul>{ constructedQuestionnaire }</ul>
+    </section>
+    );
 };
 
 export default CompletedQuestionnaire;

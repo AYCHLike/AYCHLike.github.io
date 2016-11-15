@@ -16,14 +16,14 @@ class QuestionnaireShow extends React.Component {
     } else {
       if (this.props.currentUser.admin) {
       return (
-        <article>
+        <article className="show">
           <Link to="/questionnaires">Back</Link>
           <AdminQuestionnaire questionnaire={ this.props.questionnaire }/>
         </article>
         );
       } else {
       return (
-        <article>
+        <article className="show">
           <Link to="/questionnaires">Back</Link>
           <EndUserQuestionnaire questionnaire={ this.props.questionnaire }
             currentUser= { this.props.currentUser }/>

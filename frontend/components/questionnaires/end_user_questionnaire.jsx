@@ -27,10 +27,20 @@ const EndUserQuestionnaire = ({ questionnaire, currentUser }) => {
     }
   };
   if (questionnaireCompleted()) {
-    return <CompletedQuestionnaire questionnaire={ questionnaire }
-      userKey={ findUserKey() } />;
+    return (
+      <section>
+        <h1>{ questionnaire.title }</h1>
+        <CompletedQuestionnaire questionnaire={ questionnaire }
+          userKey={ findUserKey() } />
+      </section>
+    );
   } else {
-    return <EndUserQuestionnaireFormContainer questionnaire={ questionnaire }/>;
+    return (
+      <section>
+        <h1>{ questionnaire.title }</h1>
+        <EndUserQuestionnaireFormContainer questionnaire={ questionnaire }/>;
+      </section>
+    );
   }
 
 };

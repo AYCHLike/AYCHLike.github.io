@@ -38,21 +38,25 @@ class QuestionnaireIndex extends React.Component {
     // component will call the toggleForm method to show the links index again.
     // Obviously we don't want the button to exist unless current user is an admin
     let body;
+    let header;
     let formButton;
     if (this.props.admin) {
-      formButton = <button onClick={ this.toggleForm }>Show/Hide Form</button>
+      formButton = <button className="form-toggle" onClick={ this.toggleForm }>Show/Hide Form</button>;
     }
     if (this.state.showForm) {
       body = <AdminQuestionnaireFormContainer toggleForm={ this.toggleForm }/>;
+      header = <h1>New Questionnaire</h1>;
     } else {
       body = <ul>{ questionnaireLinks }</ul>;
+      header = <h1>Your Questionnaires:</h1>;
     }
     if (!this.props.questionnaires[0]) {
       return <p>Loading...</p>;
     } else {
       return (
-        <article>
+        <article className="index">
           { formButton }
+          { header }
           { body }
         </article>
       );

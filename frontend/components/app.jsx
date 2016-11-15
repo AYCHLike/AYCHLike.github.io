@@ -4,7 +4,9 @@ import HeaderContainer from './header_container.js';
 const App = ({ children }) => (
   <div>
     <HeaderContainer />
-    { children  }
+    <div className="main">
+      { children }
+    </div>
   </div>
 );
 

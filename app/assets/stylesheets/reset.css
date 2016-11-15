@@ -1,4 +1,4 @@
-html, body, header, nav, h1, h3, a, ul, li,
+html, body, header, nav, h1, h3, h4, h6, a, ul, li,
 strong, main, section, img, div, h2, p,
 form, fieldset, label, input, textarea,
 button, article, footer, small, span,
@@ -34,4 +34,9 @@ ul {
 
 a, button {
   cursor: pointer;
+}
+
+.main {
+  max-width: 60vw;
+  margin: 0 auto;
 }
