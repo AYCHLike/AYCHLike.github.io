@@ -89,7 +89,7 @@ class SessionForm extends React.Component {
             <ul>
               { allErrors }
             </ul>
-          <button>Continue</button><br />
+          <button>Submit</button><br />
           <span>{ beforeLinkText }</span>
           <button onClick={ this.swapForms }>{ linkText }</button>
           <button onClick={ this.demoLogin }>Demo</button>

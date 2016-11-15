@@ -44,7 +44,8 @@ class AdminQuestionnaireForm extends React.Component {
     this.setState(newState);
   }
 
-  handleSubmit () {
+  handleSubmit (e) {
+    e.preventDefault();
     const questions = Object.keys(this.state.questions).map((key) => {
       return this.state.questions[key];
     });
@@ -76,10 +77,12 @@ class AdminQuestionnaireForm extends React.Component {
           <input onChange={ this.handleTitleFieldChange } value={ this.state.title } />
         </label>
         <button onClick={ this.addQuestionForm }>Add Question</button>
-        <ul>
-          { questionForms }
-        </ul>
-        <button onClick={ this.handleSubmit }>Submit</button>
+        <form onSubmit={ this.handleSubmit }>
+          <ul>
+            { questionForms }
+          </ul>
+          <button>Submit</button>
+        </form>
       </article>
     );
   }

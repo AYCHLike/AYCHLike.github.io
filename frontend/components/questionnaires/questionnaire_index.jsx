@@ -12,12 +12,7 @@ class QuestionnaireIndex extends React.Component {
   }
 
   componentDidMount() {
-    // Fetching questionnaires from the database if there are none in the store.
-    if (!this.props.questionnaires[0]) {
-      this.props.requestAllQuestionnaires();
-      this.constructLinks = this.constructLinks.bind(this);
-      this.toggleForm = this.toggleForm.bind(this);
-    }
+    this.props.requestAllQuestionnaires();
   }
 
   constructLinks() {
@@ -53,7 +48,7 @@ class QuestionnaireIndex extends React.Component {
       body = <ul>{ questionnaireLinks }</ul>;
     }
     if (!this.props.questionnaires[0]) {
-      return <h1>Testing</h1>;
+      return <p>Loading...</p>;
     } else {
       return (
         <article>

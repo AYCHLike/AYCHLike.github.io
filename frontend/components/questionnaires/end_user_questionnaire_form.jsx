@@ -31,7 +31,8 @@ class EndUserQuestionnaireForm extends React.Component {
     this.setState(newState);
   }
 
-  handleSubmit () {
+  handleSubmit (e) {
+    e.preventDefault();
     const responses = Object.keys(this.state).map((id) => {
       return {
         body: this.state[id].body,
@@ -75,10 +76,12 @@ class EndUserQuestionnaireForm extends React.Component {
         <ul>
           { allErrors }
         </ul>
-        <ul>
-          { questionnaireItems }
-        </ul>
-        <button onClick={ this.handleSubmit }>Submit</button>
+        <form onSubmit={ this.handleSubmit }>
+          <ul>
+            { questionnaireItems }
+          </ul>
+          <button>Submit</button>
+        </form>
       </article>
     );
   }

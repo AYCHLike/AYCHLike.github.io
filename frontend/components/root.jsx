@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 import App from './app.jsx';
 import SessionFormContainer from './session/session_form_container.js';
 import QuestionnaireIndexContainer from './questionnaires/questionnaire_index_container.js';
@@ -21,6 +21,7 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App } >
+          <IndexRedirect to="/questionnaires"/>
           <Route path="questionnaires" component={ QuestionnaireIndexContainer } onEnter={ _redirectUnlessLoggedIn } />
           <Route path="questionnaires/:id" component={ QuestionnaireShowContainer } />
           <Route path="login" component={ SessionFormContainer } onEnter={ _redirectIfLoggedIn } />
