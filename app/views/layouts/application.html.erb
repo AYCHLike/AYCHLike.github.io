@@ -2,13 +2,16 @@
 <html>
   <head>
     <title>EverplansQuestionnaire</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script type="text/javascript">
       window.EQAssets = {
-        logo: "<%= image_url("logo.jpg") %>",
+        logo: "<%= image_url("logo.png") %>",
+        whitelogo: "<%= image_url("whitelogo.png") %>"
       }
     </script>
   </head>

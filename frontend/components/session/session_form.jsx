@@ -63,11 +63,11 @@ class SessionForm extends React.Component {
     let linkText;
     let beforeLinkText;
     if (this.props.formType === "login") {
-      header = <h1 className="form-label">Log In</h1>;
+      header = <h1>Log In</h1>;
       beforeLinkText = "Don't have an account?";
       linkText = "Sign Up";
     } else {
-      header = <h1 className="form-label">Sign Up</h1>;
+      header = <h1>Sign Up</h1>;
       beforeLinkText = "Already have an account?";
       linkText = "Log In";
     }
@@ -77,23 +77,25 @@ class SessionForm extends React.Component {
       return <li className="form-error" key={ idx }>{ error }</li>;
     });
     return (
-      <div>
-        { header }
-        <form onSubmit={ this.handleSubmit }>
-          <label>Username</label>
-            <input value={ this.state.username } onChange={ (e) => this.handleChange("username", e) }/>
-          <br />
-          <label>Password</label>
-            <input type="password" value={ this.state.password } onChange={ (e) => this.handleChange("password", e) }/>
-          <br />
-            <ul>
-              { allErrors }
-            </ul>
-          <button>Submit</button><br />
-          <span>{ beforeLinkText }</span>
-          <button onClick={ this.swapForms }>{ linkText }</button>
-          <button onClick={ this.demoLogin }>Demo</button>
-        </form>
+      <div className="main">
+        <div className="session-form-container">
+          { header }
+          <form onSubmit={ this.handleSubmit }>
+            <label>Username</label>
+              <input value={ this.state.username } onChange={ (e) => this.handleChange("username", e) }/>
+            <br />
+            <label>Password</label>
+              <input type="password" value={ this.state.password } onChange={ (e) => this.handleChange("password", e) }/>
+            <br />
+              <ul>
+                { allErrors }
+              </ul>
+            <button className="submit">Submit</button><br />
+            <span>{ beforeLinkText }</span>
+            <button onClick={ this.swapForms }>{ linkText }</button>
+            <button onClick={ this.demoLogin }>Demo</button>
+          </form>
+        </div>
       </div>
     );
   }
