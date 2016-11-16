@@ -12,9 +12,8 @@
 #
 
 FactoryGirl.define do
-  factory :user do
-    username "MyString"
-    password_digest "MyString"
-    admin false
+  factory :user, aliases: [ :author ] do
+    username "TestUser"
+    password "password"
   end
 end

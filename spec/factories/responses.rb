@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
   factory :response do
-    body "MyString"
+    body "TestString"
     author_id 1
     question_id 1
   end
