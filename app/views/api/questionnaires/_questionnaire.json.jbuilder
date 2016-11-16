@@ -13,39 +13,43 @@ end
 # Sample json response (lots of ids pointing to objects for fast and easy lookup and updating in the redux store)
 # {
 #   "id": 1,
-#   "title": "testsurvey",
+#   "title": "Favorite things",
 #   "questions": {
 #     "1": {
-#       "name": "Question 1",
-#       "label": "Favorite food",
-#       "responses": {
-#         "1": {
-#           "body": "Lasagna",
-#           "author": "testuser",
-#           "created_at": "about 17 hours ago"
-#         },
-#         "2": {
-#           "body": "Pizza",
-#           "author": "another",
-#           "created_at": "about 17 hours ago"
+#       "name": "Color",
+#       "label": "What is your favorite color?",
+#       "responses": [
+#         {
+#           "body": "Red",
+#           "question_id": 1,
+#           "author_name": "taylorbherron",
+#           "created_at": "11 minutes ago"
 #         }
-#       }
+#       ]
 #     },
 #     "2": {
-#       "name": "Question 2",
-#       "label": "Favorite color",
-#       "responses": {
-#         "3": {
-#           "body": "Red",
-#           "author": "another",
-#           "created_at": "about 17 hours ago"
-#         },
-#         "4": {
-#           "body": "Blue",
-#           "author": "testuser",
-#           "created_at": "about 17 hours ago"
+#       "name": "Food",
+#       "label": "What is your favorite food?",
+#       "responses": [
+#         {
+#           "body": "Tie between fried okra and my mother's lasagna",
+#           "question_id": 2,
+#           "author_name": "taylorbherron",
+#           "created_at": "11 minutes ago"
 #         }
-#       }
+#       ]
+#     },
+#     "3": {
+#       "name": "Musical Artist",
+#       "label": "Who is your favorite musical artist?",
+#       "responses": [
+#         {
+#           "body": "Stevie Wonder",
+#           "question_id": 3,
+#           "author_name": "taylorbherron",
+#           "created_at": "11 minutes ago"
+#         }
+#       ]
 #     }
 #   }
 # }

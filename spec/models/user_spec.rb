@@ -49,7 +49,7 @@ RSpec.describe User do
     let!(:user) { create(:user) }
 
     it { is_expected.to validate_presence_of(:username) }
-    it { is_expected.to validate_presence_of(:password) }
+    it { is_expected.to validate_presence_of(:password_digest) }
     it { is_expected.to validate_presence_of(:session_token) }
     it { is_expected.to validate_uniqueness_of(:username) }
     it { is_expected.to validate_uniqueness_of(:session_token) }

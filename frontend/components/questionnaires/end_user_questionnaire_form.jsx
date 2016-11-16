@@ -57,7 +57,7 @@ class EndUserQuestionnaireForm extends React.Component {
       };
       return (
         <li key={ id } className="clearfix">
-          <span className="name-and-label">
+          <span className="name-and-label enduser">
             <h3>{ question.name }</h3>
             <h6>{ question.label }</h6>
           </span>

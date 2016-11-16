@@ -50,17 +50,14 @@ class QuestionnaireIndex extends React.Component {
       body = <ul>{ questionnaireLinks }</ul>;
       header = <h1>Your Questionnaires:</h1>;
     }
-    if (!this.props.questionnaires[0]) {
-      return <p>Loading...</p>;
-    } else {
-      return (
-        <article className="index">
-          { formButton }
-          { header }
-          { body }
-        </article>
-      );
-    }
+    return (
+      <article className="index">
+        { formButton }
+        { header }
+        { body }
+      </article>
+    );
+
   }
 }
 

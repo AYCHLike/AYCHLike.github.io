@@ -10,8 +10,8 @@ import QuestionField from './question_field.jsx';
 // in the props. Each time we add another question to the form, we add a field to the state,
 // where the questions are structured as a question key pointing to its required fields.
 // Once we're ready to submit, both the questionnaire data and the data for all of the questions
-// are sent to the questionnaire controller, where they're handled with a factory method that
-// builds one ActiveRecord transaction for everything, and will catch any exception thrown and
+// are sent to the questionnaires controller, where they're handled with a factory method that
+// executes one ActiveRecord transaction for everything, and will catch any exception thrown and
 // render it so that we get feedback on the form
 class AdminQuestionnaireForm extends React.Component {
   constructor(props) {
