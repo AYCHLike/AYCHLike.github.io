@@ -7,9 +7,7 @@ const ResponseField = ({ questionKey, onChange, value}) => {
     onChange(questionKey, bodyValue);
   };
   return (
-    <label>Response:
-      <input onChange={ handleChange } value={ value }/>
-    </label>
+    <textarea onChange={ handleChange } value={ value }/>
   );
 };
 

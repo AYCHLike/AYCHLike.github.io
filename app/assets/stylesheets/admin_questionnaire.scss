@@ -50,11 +50,6 @@
     min-height: 80px;
   }
 
-  .name-and-label {
-    float: left;
-    display: block;
-  }
-
   .response-info {
     float: right;
     width: 80%;
@@ -80,5 +75,12 @@
   p {
     font-style: italic;
     font-size: 12px;
+    float: right;
   }
+}
+
+ul li .name-and-label {
+  float: left;
+  display: block;
+  width: 20%;
 }

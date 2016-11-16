@@ -1,0 +1,44 @@
+/* line 1, /Users/taylorherron/everplans-questionnaire/app/assets/stylesheets/index.scss */
+.index {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 10px;
+}
+/* line 8, /Users/taylorherron/everplans-questionnaire/app/assets/stylesheets/index.scss */
+.index h1 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+/* line 15, /Users/taylorherron/everplans-questionnaire/app/assets/stylesheets/index.scss */
+.index ul {
+  text-align: center;
+  display: block;
+}
+/* line 20, /Users/taylorherron/everplans-questionnaire/app/assets/stylesheets/index.scss */
+.index li {
+  font-size: 28px;
+  padding: 15px;
+  color: #4a90e2;
+}
+/* line 26, /Users/taylorherron/everplans-questionnaire/app/assets/stylesheets/index.scss */
+.index a:hover {
+  color: #a412d1;
+  transition: color 0.5s ease;
+}
+/* line 31, /Users/taylorherron/everplans-questionnaire/app/assets/stylesheets/index.scss */
+.index .form-toggle {
+  font-size: 16px;
+  padding: 5px 10px;
+  background: #eee;
+  border-radius: 3px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+/* line 41, /Users/taylorherron/everplans-questionnaire/app/assets/stylesheets/index.scss */
+.index .form-toggle:hover {
+  border-color: #ccc;
+}

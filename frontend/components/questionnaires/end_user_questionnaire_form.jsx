@@ -56,9 +56,11 @@ class EndUserQuestionnaireForm extends React.Component {
         value: this.state[id].body
       };
       return (
-        <li key={ id }>
-          <h3>{ question.name }</h3>
-          <h6>{ question.label }</h6>
+        <li key={ id } className="clearfix">
+          <span className="name-and-label">
+            <h3>{ question.name }</h3>
+            <h6>{ question.label }</h6>
+          </span>
           <ResponseField {...props} key={ id }/>
         </li>
       );
@@ -71,17 +73,16 @@ class EndUserQuestionnaireForm extends React.Component {
       return <li className="form-error" key={ idx }>{ error }</li>;
     });
     return (
-      <article>
-        <h1>{ this.props.questionnaire.title }</h1>
-        <ul>
-          { allErrors }
-        </ul>
+      <article className="user-form">
         <form onSubmit={ this.handleSubmit }>
           <ul>
             { questionnaireItems }
           </ul>
-          <button>Submit</button>
+          <button className="submit">Submit</button>
         </form>
+        <ul>
+          { allErrors }
+        </ul>
       </article>
     );
   }

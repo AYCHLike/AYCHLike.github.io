@@ -38,7 +38,7 @@ const EndUserQuestionnaire = ({ questionnaire, currentUser }) => {
     return (
       <section>
         <h1>{ questionnaire.title }</h1>
-        <EndUserQuestionnaireFormContainer questionnaire={ questionnaire }/>;
+        <EndUserQuestionnaireFormContainer questionnaire={ questionnaire }/>
       </section>
     );
   }
