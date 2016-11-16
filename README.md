@@ -10,7 +10,7 @@ To run locally, make sure Postgres is running, cd into the root directory in you
 * `bundle exec rake db:reset` (this is a little odd, I left a note about it in `db/seeds`)
 * `bundle exec rails s`
 
-You should now be up and running! Navigate to [localhost:3000](http://localhost:3000) and have a look around! Feel free to create an end user account on the signup page, and you can start answering some questionnaires. If you'd like to log in as an admin, click the demo link on the login or signup page and you can take a look at the end users' answers.
+You should now be up and running! Navigate to [localhost:3000](http://localhost:3000) and have a look around. Feel free to create an end user account on the signup page, and you can start answering some questionnaires. If you'd like to log in as an admin, click the demo link on the login or signup page and you can take a look at the end users' answers and create some questionnaires of your own.
 
 ### Technical Details
 The questionnaires are fetched with all of the associated questions, responses, and authors of the responses eager loaded, and the response is formatted in a manner that makes it easy to extract the necessary data on each of the models as needed. If you want to take a look at an example of how a questionnaire is formatted by the back end, take a look at `views/api/questionnaires/_questionnaire.json.jbuilder`.
@@ -22,3 +22,5 @@ For the admin user, the page for a given questionnaire provides a select field f
 For end users, unanswered questionnaires will include fields for submitting responses, and answered questionnaires will display their responses and how long ago they responded.
 
 End users can create accounts from the signup page, and passwords are encrypted with BCrypt and stored in the database along with the username. Admin accounts can only be created by the application owners.
+
+If you'd like to run the test suite for the back end, just run `bundle exec rspec` in the terminal.
