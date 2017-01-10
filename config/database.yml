@@ -12,7 +12,6 @@
 #       Install PostgreSQL and put its /bin directory on your path.
 #
 # Configure Using Gemfile
-gem 'pg'
 #
 default: &default
   adapter: postgresql
