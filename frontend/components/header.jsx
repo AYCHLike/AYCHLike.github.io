@@ -34,8 +34,7 @@ const Header = ({ currentUser, logout, router, clearErrors }) => {
   return (
     <div className="header-container">
       <header className="clearfix">
-        <img src="https://www.everplans.com/sites/all/themes/bootstrap_client/img/Everplans%20Logo%20White%20Transparent%20Crop-01.svg"/>
-        <h1>questionnaire manager</h1><span> &#8482;</span>
+        <h1>Questionnaire Manager</h1>
         <nav>
           { welcomeMessage }
           { links }
