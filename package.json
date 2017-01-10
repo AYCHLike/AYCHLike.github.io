@@ -4,7 +4,8 @@
   "description": "Rails and React.js/Redux app for a full-stack position.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +25,9 @@
   },
   "devDependencies": {
     "redux-logger": "^2.7.4"
+  },
+  "engines": {
+    "node": "6.9.2",
+    "npm": "3.10.9"
   }
 }
