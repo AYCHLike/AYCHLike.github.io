@@ -1,8 +1,8 @@
 # Questionnaire Manager
 
-Questionnaire Manager is a web application for submitting and answering questionnaires built with a Ruby on Rails back end serving JSON to a React/Redux front end. The admin user can create questionnaires and view end user's responses, and end users can respond to existing questionnaires.
+[Questionnaire Manager](http://questionnaire-manager.herokuapp.com/) is a web application for submitting and answering questionnaires built with a Ruby on Rails back end serving JSON to a React/Redux front end. The admin user can create questionnaires and view end user's responses, and end users can respond to existing questionnaires.
 
-### Setup Instructions
+### Local Setup Instructions
 To run locally, make sure Postgres is running, cd into the root directory in your terminal, and run the following commands:
 * `bundle install`
 * `npm install`
